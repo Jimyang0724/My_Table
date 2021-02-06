@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main2Activity">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="70dp"
+        tools:layout_editor_absoluteY="74dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        app:boxBackgroundColor="@android:color/transparent"
+        android:background="@android:color/transparent"
+        android:id="@+id/layoutDrinkName"
+        android:layout_marginStart="30dp"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/drinkName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:inputType="text"
+            android:hint="飲料"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/sugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="甜度"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/layoutDrinkName"
+        app:layout_constraintTop_toBottomOf="@id/layoutDrinkName" />
+<!--        tools:layout_editor_absoluteX="70dp"-->
+<!--        tools:layout_editor_absoluteY="74dp" />-->
+    <RadioGroup
+        android:id="@+id/sugarOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:checkedButton="@id/regularSugar"
+        app:layout_constraintTop_toBottomOf="@id/sugar"
+        app:layout_constraintStart_toStartOf="@id/sugar">
+        <RadioButton
+            android:id="@+id/noSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="無糖"/>
+        <RadioButton
+            android:id="@+id/littleSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微糖"/>
+        <RadioButton
+            android:id="@+id/halfSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="半糖"/>
+        <RadioButton
+            android:id="@+id/regularSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正常"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/ice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="冰塊"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/layoutDrinkName"
+        app:layout_constraintTop_toBottomOf="@id/layoutDrinkName" />
+    <RadioGroup
+        android:id="@+id/iceOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:checkedButton="@id/regularIce"
+        app:layout_constraintTop_toBottomOf="@id/ice"
+        app:layout_constraintStart_toStartOf="@id/ice">
+        <RadioButton
+            android:id="@+id/noIce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去冰"/>
+        <RadioButton
+            android:id="@+id/littleIce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微冰"/>
+        <RadioButton
+            android:id="@+id/lessIce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="少冰"/>
+        <RadioButton
+            android:id="@+id/regularIce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正常冰"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/checkButtom"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="@string/check"
+        app:layout_constraintStart_toStartOf="@id/layoutDrinkName"
+        app:layout_constraintTop_toBottomOf="@id/sugarOption"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

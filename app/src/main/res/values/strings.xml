@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Table</string>
+    <string name="email">Email</string>
+    <string name="inputPass">輸入密碼</string>
+    <string name="inputPassAgain">再次輸入密碼</string>
+    <string name="check">確認</string>
+    <string name="register">註冊</string>
+    <string name="login">登入</string>
+</resources>
