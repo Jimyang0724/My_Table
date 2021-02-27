@@ -1,11 +1,16 @@
 package com.example.mytable
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.mytable.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if(System.currentTimeMillis() - exitTime < 2000){
             startActivity(Intent(this, FirstPage::class.java))
+            FirebaseAuth.getInstance().signOut()
             finish()
         }
         else{
@@ -39,12 +45,33 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         data?.extras?.let {
-            if (requestCode == 1 && resultCode == Activity.RESULT_OK)
+            if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
                 binding.order.text =
-                    "飲料:${it.getString("drinksKey")}\n\n甜度:${it.getString("sugarKey")}\n\n冰塊:${it.getString("iceKey")}"
+                        "飲料:${it.getString("drinksKey")}\n\n甜度:${it.getString("sugarKey")}\n\n冰塊:${it.getString("iceKey")}"
+                val user = FirebaseAuth.getInstance().currentUser
+                val userName = user?.email
+
+                if(userName == null){
+                    Toast.makeText(this, "尚未登入", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+
+                val db = FirebaseDatabase.getInstance()
+                val dbRef = db.reference.child("a").child("b")//.child(user.toString()).setValue("a") // /${userName.toString()}/Drinks/")
+
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage("${db.toString()} \n\n ${dbRef.toString()}")
+                builder.show()
+
+                dbRef.child("Name").setValue(it.getString("drinksKey"))
+                dbRef.child("Sugar").setValue(it.getString("sugarKey"))
+                dbRef.child("Ice").setValue(it.getString("iceKey"))
+
+            }
         }
     }
 

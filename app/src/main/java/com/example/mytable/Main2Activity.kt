@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.mytable.databinding.ActivityMain2Binding
 import com.example.mytable.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class Main2Activity : AppCompatActivity() {
     lateinit var binding2: ActivityMain2Binding
@@ -15,6 +17,8 @@ class Main2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
         binding2 = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding2.root)
+
+//        val user = FirebaseAuth.getInstance().currentUser
 
         val nameGet = intent.getStringExtra("nameKey")
         binding2.name.text = "訂購人姓名：$nameGet"

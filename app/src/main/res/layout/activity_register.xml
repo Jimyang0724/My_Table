@@ -37,7 +37,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="20">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passeord"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="20sp"
